@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interview</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <% if current_user %>
+      <%= "Logged in to #{current_user.company.name} as #{current_user.email}" %> | <%= link_to 'Customers', customers_path %> | <%= link_to 'Log Out', logout_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Home', root_path %> | <%= link_to 'Log In', login_path %>
+    <% end %>
+    <hr>
+
+    <% if notice %>
+      <%= notice %>
+    <% end %>
+
+    <% if alert %>
+      <%= alert %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
