@@ -3,7 +3,8 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = current_user.company.customers
+    #@customers = current_user.company.customers
+    @customers = Customer.all
   end
 
   def show
@@ -17,7 +18,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = Customer.new(customer_params.merge({company: current_user.company}))
+    @customer = Customer.new(customer_params.merge({company: current_user.companies.first}))
 
     respond_to do |format|
       if @customer.save
@@ -53,7 +54,7 @@ class CustomersController < ApplicationController
   private
 
   def set_customer
-    @customer = current_user.company.customers.find(params[:id])
+    @customer = current_user.companies.first.customers.find(params[:id])
   end
 
   def customer_params

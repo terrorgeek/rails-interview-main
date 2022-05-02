@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
-  resource :company, only: :show
+  resources :companies, only: [:show, :index]
 
   get '/login'     => 'sessions#new'
   post '/login'    => 'sessions#create'

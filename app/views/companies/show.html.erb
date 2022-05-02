@@ -1,3 +1,5 @@
-<h1>
-  <%= @company.name %>
-</h1>
+<p><%= @company.name %></p>
+
+<% @customers.each do |customer| %>
+  <p><%= "#{customer.email} - #{customer.first_name} #{customer.last_name}"%></p>
+<% end %>
