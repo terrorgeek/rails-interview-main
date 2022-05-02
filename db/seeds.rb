@@ -1,3 +1,7 @@
+# Company.destroy_all
+# User.destroy_all
+# CompanyUser.destroy_all
+
 plumbing_company    = Company.create name: 'Plumbing Palace'
 plumbing_empire    = Company.create name: 'Plumbing Empire'
 electrician_company = Company.create name: 'Eclectic Electric'
@@ -21,3 +25,4 @@ electrician     = User.create first_name: 'The',
 electrician_company.users << electrician
 plumbing_company.users << plumber
 plumbing_empire.users << plumber_emperor
+plumbing_empire.users << plumber

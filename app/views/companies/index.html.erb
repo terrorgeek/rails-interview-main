@@ -1,0 +1,6 @@
+<% @companies.each do |company| %>
+    <h1>
+      <%= link_to company.name, company_path(company) %>
+    </h1>
+<% end %>
+

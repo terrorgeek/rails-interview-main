@@ -3,7 +3,8 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = current_user.company.customers
+    #@customers = current_user.company.customers
+    @customers = Customer.all
   end
 
   def show

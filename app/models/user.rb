@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_one :company_user
-  has_one :company, through: :company_user
+  has_many :company_users
+  has_many :companies, through: :company_users
 
   validates :first_name, :last_name, presence: true
   validates :email, presence: true,
