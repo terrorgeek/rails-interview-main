@@ -1,5 +1,5 @@
 <h1>Log In</h1>
-<%= form_for :login do |f| %>
+<%= form_for :login, html: {id: "login-form"} do |f| %>
   <div>
     <%= f.label :email %>
     <%= f.text_field :email, autofocus: true %>
