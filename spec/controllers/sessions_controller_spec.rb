@@ -6,6 +6,7 @@ RSpec.describe SessionsController do
     it "Should render :new after failed login" do
       post "create", params: {login: { email: "the@plumber.com", password: "wrong_password" }} 
       expect(response).to render_template(:new)
+      expect(assigns(:my_instance_variable)).to eq("Yu Song")
     end
   end
 end

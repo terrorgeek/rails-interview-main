@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
+  include LoginConcerns
+
   def new
   end
 
   def create
+    set_a_instance_variable
     user = User.find_by(email: params[:login][:email].downcase)
 
     if user && user.authenticate(params[:login][:password])

@@ -2,9 +2,12 @@ class CustomersController < ApplicationController
   before_action :authorize
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  include LoginConcerns
+
   def index
-    #@customers = current_user.company.customers
-    @customers = Customer.all
+    set_a_instance_variable
+    @customers = current_user.companies.first.customers
+    #@customers = Customer.all
   end
 
   def show
