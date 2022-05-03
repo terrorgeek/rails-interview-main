@@ -24,6 +24,11 @@
   </tbody>
 </table>
 
-<br>
+<br/>
+
+<%= link_to "Newest Customer", newest_customer_customers_path, class: "btn btn-success" ,remote: true %>
+<p id='newest-customer'></p>
+
+<br/>
 
 <%= link_to 'New Customer', new_customer_path %>

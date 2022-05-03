@@ -10,6 +10,10 @@ class CustomersController < ApplicationController
     #@customers = Customer.all
   end
 
+  def newest_customer
+    @newest_customer = Customer.order(created_at: :desc).first
+  end
+
   def show
   end
 

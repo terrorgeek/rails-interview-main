@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :customers
+  resources :customers do 
+    collection do 
+      get :newest_customer
+    end
+  end
   get 'welcome/index'
 
   root to: 'welcome#index'
