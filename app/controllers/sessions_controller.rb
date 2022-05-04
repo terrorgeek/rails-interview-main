@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
 
   def create
     set_a_instance_variable
+    #UserMailerJob.perform_later
+    UserMailer.send_email.deliver_later
     user = User.find_by(email: params[:login][:email].downcase)
 
     if user && user.authenticate(params[:login][:password])

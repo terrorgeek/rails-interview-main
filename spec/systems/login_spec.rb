@@ -36,4 +36,12 @@ RSpec.describe "Users", type: :feature do
     find("#create-customer-button").click
     expect(page).to have_selector("#logged-in-header")
   end
+
+  it "returns canned responses from the methods named in the provided hash" do
+    dbl = double("Some Collaborator", :foo => 3, :bar => 4)
+    allow(dbl).to receive(:fuck) { "fuck you" }
+    expect(dbl.foo).to eq(3)
+    expect(dbl.bar).to eq(4)
+    expect(dbl.fuck).to eq("fuck you")
+  end
 end

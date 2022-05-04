@@ -8,5 +8,17 @@ RSpec.describe SessionsController do
       expect(response).to render_template(:new)
       expect(assigns(:my_instance_variable)).to eq("Yu Song")
     end
+
+    # it "When login the email should be sent" do 
+    #   expect{ 
+    #     post "create", params: {login: { email: "the@plumber.com", password: "wrong_password" }} 
+    #   }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    # end
+
+    it 'When login the email should be sent by Sidekiq' do 
+      expect{ 
+        post "create", params: {login: { email: "the@plumber.com", password: "wrong_password" }} 
+      }.to have_enqueued_mail(UserMailer, :send_email)
+    end
   end
 end
